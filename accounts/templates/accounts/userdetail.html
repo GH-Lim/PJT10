@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}User Detail{% endblock title %}
+
+{% block body %}
+<h3>{{ user.username }}님이 작성한 평점 정보</h3>
+{% for review in user.reviews.all %}
+<p>{{ review.movie }} - {{ review.content }} - {{ review.score }}</p>
+{% endfor %}
+<hr>
+<h3>{{ user.username }}님이 좋아하는 영화 정보</h3>
+{% for movie in user.liked_movies.all %}
+<p>{{ movie.title }}</p>
+{% endfor %}
+<hr>
+<h4>팔로잉 {{ user.followings | length }} / 팔로우 {{ user.followers | length }}</h4>
+{% comment %} <h3>{{ user.username }}</h3> {% endcomment %}
+{% endblock body %}
